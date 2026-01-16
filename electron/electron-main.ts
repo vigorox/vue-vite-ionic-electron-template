@@ -1,8 +1,12 @@
 import * as remoteMain from '@electron/remote/main';
 import { app, BrowserWindow, dialog, globalShortcut, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
-const isDevelopment = process.env.NODE_ENV !== 'production';
+import { exec } from 'child_process';
+import sudo from 'sudo-prompt';
+import { appName, appTitle } from '../src/app-runtime-config.json';
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const isWin = process.platform === 'win32';
 let isForceQuit = false;
 let isConfirmingClose = false;
 
@@ -23,11 +27,11 @@ app.whenReady().then(() => {
   });
   remoteMain.enable(win.webContents); // Enable remote module
 
-  // You can use `process.env.VITE_DEV_SERVER_URL` when the vite command is called `serve`
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
     win.loadFile('dist/index.html');
+    registerAutoUpdate(win);
   }
 
   // Fixed the issue that the title of the window might change when router changes
@@ -72,6 +76,10 @@ app.whenReady().then(() => {
       win.webContents.toggleDevTools();
     }
   });
+
+  if (isDevelopment == false) {
+    setupFirewall();
+  }
 });
 
 const registerAutoUpdate = (win: BrowserWindow) => {
@@ -133,4 +141,57 @@ const registerAutoUpdate = (win: BrowserWindow) => {
   ipcMain.on('check-update', () => {
     autoUpdater.checkForUpdates();
   });
+};
+
+const setupFirewall = () => {
+  if (!isWin) {
+    return;
+  }
+
+  const ruleName = appName; // Firewall rule name, can contain hyphens
+  const appPath = process.execPath;
+
+  // 1. Check if the rule exists with normal privileges
+  exec(
+    `netsh advfirewall firewall show rule name="${ruleName}"`,
+    async (err, stdout) => {
+      // If rule not found
+      if (err || !stdout.includes(ruleName)) {
+        // 2. Show Electron native dialog to inform user
+        const { response } = await dialog.showMessageBox({
+          type: 'info',
+          title: 'Network Configuration',
+          message:
+            'To ensure UDP communication (scanning gateways) works correctly, we need to add a Windows Firewall exception.',
+          detail:
+            'Please click "Yes" on the following system prompt to grant permission.',
+          buttons: ['OK', 'Cancel'],
+          defaultId: 0,
+          cancelId: 1,
+        });
+
+        // Execute permission request only if user clicks OK (index 0)
+        if (response === 0) {
+          const options = {
+            name: appTitle, // Must be alphanumeric and spaces only
+          };
+
+          const command =
+            `netsh advfirewall firewall delete rule name="${ruleName}" & ` +
+            `netsh advfirewall firewall add rule name="${ruleName}" dir=in action=allow program="${appPath}" enable=yes protocol=UDP profile=any`;
+
+          sudo.exec(command, options, (sudoError, sudoStdout, sudoStderr) => {
+            if (sudoError) {
+              console.error('Permission declined:', sudoError);
+              // Fallback: If declined, can show "Connection features limited" in UI
+            } else {
+              console.log('Firewall rule added successfully.');
+            }
+          });
+        }
+      } else {
+        console.log('Firewall rule already exists.');
+      }
+    },
+  );
 };
