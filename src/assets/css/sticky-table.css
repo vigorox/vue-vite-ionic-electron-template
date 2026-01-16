@@ -1,0 +1,42 @@
+.css-table-wrapper {
+  height: calc(100vh - 150px);
+  overflow-y: scroll;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-top: 90px;
+}
+
+.css-table {
+  display: table;
+  width: 100%;
+  z-index: 0;
+  background-color: #ffffff; /* important */
+  color: #555;
+}
+
+.css-table .tr {
+  display: table-row;
+}
+
+.css-table .th,
+.css-table .td {
+  display: table-cell;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+  padding: 8px;
+}
+
+.css-table .td.header {
+  background-color: #ffffff; /* important */
+  font-weight: bold;
+  padding: 10px;
+  font-size: 0.8em;
+  color: #777;
+}
+
+.sticky {
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+}

@@ -1,0 +1,52 @@
+/* iOS Theme Variables */
+:root {
+  /* iOS specific colors */
+  --ion-color-primary: #007aff;
+  --ion-color-primary-rgb: 0, 122, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #006ce0;
+  --ion-color-primary-tint: #1a86ff;
+
+  /* iOS system colors */
+  --ion-color-secondary: #5ac8fa;
+  --ion-color-secondary-rgb: 90, 200, 250;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #4fb3dc;
+  --ion-color-secondary-tint: #6bcefb;
+
+  /* iOS-style border radius */
+  --ion-border-radius: 10px;
+
+  /* iOS-style font */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
+}
+
+/* iOS-specific component styling */
+.ios ion-button {
+  --border-radius: 8px;
+}
+
+.ios ion-card {
+  --border-radius: 12px;
+}
+
+.ios ion-toolbar {
+  --background: rgba(248, 248, 248, 0.94);
+  --color: #000000;
+}
+
+/* iOS-style backdrop blur effect */
+.ios ion-header ion-toolbar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  --background: var(--ion-color-primary);
+  --color: #ffffff;
+}
+
+.ios ion-footer ion-toolbar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+

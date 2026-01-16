@@ -1,0 +1,17 @@
+
+.flex-table-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.flex-table-header {
+  font-size: 0.8em;
+  color: #777;
+  font-weight: bold;
+}
+
+.flex-table-body {
+  overflow-y: overlay;
+  table-layout: fixed;
+
+}

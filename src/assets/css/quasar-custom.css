@@ -1,0 +1,74 @@
+body {
+  background: #e0e3e7;
+}
+
+body.body--dark {
+  background: #222;
+}
+/* q-card */
+.q-card--dark {
+  background: #333;
+}
+
+/* q-drawer */
+.q-drawer--dark {
+  background: #333;
+}
+.q-drawer--dark .q-item {
+  color: #ccc;
+}
+.q-drawer--dark .q-item--active {
+  color: #86d1ff;
+  font-weight: 700;
+}
+
+.q-menu--dark {
+  background: #333;
+}
+
+.q-separator--dark {
+  background-color: #444;
+}
+
+/* color of the q-input's label */
+/* .body--dark .q-field__label {
+  color: #86d1ff;
+} */
+/* color of buttons in q-dialog plugin */
+.body--dark .q-dialog .q-btn__content * {
+  color: #86d1ff;
+}
+.q-table--dark {
+  background-color: #333;
+}
+
+.q-markup-table thead th,
+th * {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.q-markup-table tbody td,
+td * {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.q-header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.q-radio--dark .q-radio__bg {
+  color: #86d1ff;
+}
+
+.q-btn i.fa {
+  font-size: 1rem;
+  margin-right: 3px;
+}
+
+.q-item--dark.q-item--active {
+  color: #86d1ff;
+}

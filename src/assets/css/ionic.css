@@ -1,0 +1,57 @@
+* {
+  --ion-color-primary: #1976d2;
+  --ion-color-primary-rgb: 25, 118, 210;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1668b9;
+  --ion-color-primary-tint: #3084d7;
+}
+
+ion-header ion-toolbar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  --background: var(--ion-color-primary);
+}
+
+ion-header ion-toolbar * {
+  color: #ffffff;
+}
+
+ion-footer ion-toolbar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  --background: var(--ion-color-primary);
+}
+
+ion-footer ion-toolbar * {
+  color: #ffffff;
+}
+
+ion-tab-bar {
+  --background: var(--ion-color-primary);
+}
+
+ion-tab-button {
+  --color-selected: #ffffff;
+  --color: #aaa;
+  font-weight: bold;
+}
+
+ion-tab-button.tab-selected * {
+  text-decoration: underline;
+}
+
+ion-tab-bar {
+  --background: var(--ion-color-primary);
+}
+
+ion-tab-button {
+  --color-selected: #ffffff;
+  --color: #aaa;
+  font-weight: bold;
+}
+
+ion-tab-button.tab-selected * {
+  text-decoration: underline;
+}
+

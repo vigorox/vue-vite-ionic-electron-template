@@ -1,0 +1,42 @@
+{
+  productName: 'Vue Vite Quasar Electron Template',
+  appId: 'YourAppID',
+  asar: true,
+  electronLanguages: ['en-US', 'zh-TW', 'zh-CN', 'ja', 'es'],
+  directories: {
+    output: 'release/${version}',
+  },
+  files: ['dist/**/*', 'dist-electron/**/*'],
+  linux: {
+    artifactName: '${productName}-Linux-${version}.${ext}',
+    target: ['AppImage'],
+  },
+  mac: {
+    artifactName: '${productName}-Mac-${version}-Installer.${ext}',
+    target: ['dmg'],
+  },
+  nsis: {
+    allowToChangeInstallationDirectory: true,
+    deleteAppDataOnUninstall: false,
+    oneClick: false,
+    perMachine: false,
+  },
+  publish: {
+    provider: 'generic',
+    url: 'https://your.domain.com/electron-update/app-name/',
+  },
+  win: {
+    artifactName: '${productName}-Windows-${version}-Setup.${ext}',
+    target: [
+      {
+        arch: ['x64'],
+        target: 'nsis',
+      },
+    ],
+  },
+  extraMetadata: {
+    author: {
+      name: 'Lite-Puter',
+    },
+  },
+}

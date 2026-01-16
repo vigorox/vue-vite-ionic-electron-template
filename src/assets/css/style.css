@@ -1,0 +1,168 @@
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('../fonts/NotoSans-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('../fonts/NotoSans-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  src: url('../fonts/NotoSansTC-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  src: url('../fonts/NotoSansTC-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('../fonts/NotoSansSC-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('../fonts/NotoSansSC-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family: 'Noto Sans', 'Noto Sans TC', 'Noto Sans SC';
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+*:not(input):not(textarea):not(select) {
+  /*Framework7要此CSS，否則在Desktop Browser 滑鼠拖曳會選擇/highlight文字*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a {
+  /*避免a可以被拖曳*/
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+}
+
+.table {
+  width: 100%;
+  overflow: auto;
+}
+
+.table.setting-page-table {
+  height: calc(100vh - 250px);
+}
+
+.table.pattern-page-table {
+  height: calc(100vh - 200px);
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  font-weight: bold;
+  color: #777;
+  background-color: #fff;
+}
+
+.input-text {
+  width: 50px;
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-weight-900 {
+  font-weight: 900;
+}
+
+.text-size-sm {
+  font-size: 11px !important;
+}
+
+.text-size-md {
+  font-size: 14px !important;
+}
+
+.text-size-md-lg {
+  font-size: 14px !important;
+}
+
+.text-size-lg {
+  font-size: 18px !important;
+}
+
+.text-size-md-rwd {
+  font-size: 14px !important;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 1600px) {
+  .text-size-md-rwd {
+    font-size: 12px !important;
+  }
+}
+
+.fixedDiv {
+  width: 100%;
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  z-index: 999;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 20px;
+  box-shadow: 1px 1px 2px 1px #ddd;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-flex.items-center {
+  align-items: center;
+}
+
+.d-flex.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.d-flex .flex-1 {
+  flex: 1;
+}
+
+.d-flex .cell {
+  padding: 10px 0px 10px 0px;
+}
