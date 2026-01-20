@@ -6,12 +6,19 @@ import { registerAutoUpdate } from './auto-updater';
 import { setupFirewall } from './firewall-setup';
 import { handleWindowClose } from './utils';
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+// In electron-main, process.env.NODE_ENV is undefined, so we use app.isPackaged to determine the environment
+// const isDevelopment = process.env.NODE_ENV !== 'production';
+const isDevelopment = !app.isPackaged;
 let isForceQuit = false;
 let isConfirmingClose = false;
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   initI18n();
+
+  if (isDevelopment == false) {
+    await setupFirewall(appName, appTitle);
+  }
+
   const win = initRemoteMain();
 
   if (process.env.VITE_DEV_SERVER_URL) {
@@ -28,10 +35,6 @@ app.whenReady().then(() => {
 
   registerEvents(win);
   registerHotkeys(win);
-
-  if (isDevelopment == false) {
-    setupFirewall(appName, appTitle);
-  }
 });
 
 const initRemoteMain = (): BrowserWindow => {
