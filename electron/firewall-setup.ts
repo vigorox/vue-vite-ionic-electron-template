@@ -18,7 +18,7 @@ export const setupFirewall = async (
   const isWin = process.platform === 'win32';
   if (!isWin) return;
 
-  const ruleName = appName;
+  const ruleName = `${appName}-udp`;
 
   try {
     // 1. 檢查規則是否存在
