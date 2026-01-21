@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "electron:dev": "vite --config vite.config.electron.ts",
-    "electron:build": "vue-tsc && vite build --config vite.config.electron.ts && electron-builder",
+    "electron:build": "vue-tsc && vite build --config vite.config.electron.ts && electron-builder --config electron-builder.cjs",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
